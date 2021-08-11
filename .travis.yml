@@ -1,0 +1,18 @@
+sudo: false
+language: node_js
+node_js:
+  - 14 # use nodejs v10 LTS
+cache: npm
+branches:
+  only:
+    - source # build source branch only
+script:
+  - hexo generate # generate static files
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: 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
+  keep-history: true
+  on:
+    branch: master
+  local-dir: public
