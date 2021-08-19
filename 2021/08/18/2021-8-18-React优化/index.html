@@ -4,16 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>笔记</title>
+  <title>2021-8-18-React优化 | 笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="仅仅作为学习记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="笔记">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="React优化实践1. 受控组件优化可控性组件和非可控性的区别就是dom元素值是否与受到react数据状态state控制。一旦由react的state控制数据状态，比如input输入框的值，就会造成这样一个场景，为了使input值实时变化，会不断setState，就会不断触发render函数。例如： 1234567891011const Index:React.FC&lt;PropsType&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-8-18-React优化">
+<meta property="og:url" content="http://example.com/2021/08/18/2021-8-18-React%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="笔记">
-<meta property="og:description" content="仅仅作为学习记录">
+<meta property="og:description" content="React优化实践1. 受控组件优化可控性组件和非可控性的区别就是dom元素值是否与受到react数据状态state控制。一旦由react的state控制数据状态，比如input输入框的值，就会造成这样一个场景，为了使input值实时变化，会不断setState，就会不断触发render函数。例如： 1234567891011const Index:React.FC&lt;PropsType&amp;gt">
 <meta property="og:locale">
+<meta property="article:published_time" content="2021-08-18T17:30:36.000Z">
+<meta property="article:modified_time" content="2021-08-19T07:00:27.604Z">
 <meta property="article:author" content="XiaoMao">
+<meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="笔记" type="application/atom+xml">
@@ -71,60 +74,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/08/19/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2021-08-19T07:00:27.604Z" itemprop="datePublished">2021-08-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/08/19/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/19/hello-world/" data-id="cksikr5oc00031aok4shl3ibp" data-title="Hello World" class="article-share-link">Teilen</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2021-8-18-React优化" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-2021-8-18-React优化" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/08/18/2021-8-18-React%E4%BC%98%E5%8C%96/" class="article-date">
   <time class="dt-published" datetime="2021-08-18T17:30:36.000Z" itemprop="datePublished">2021-08-18</time>
@@ -137,8 +87,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/08/18/2021-8-18-React%E4%BC%98%E5%8C%96/">2021-8-18-React优化</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      2021-8-18-React优化
     </h1>
   
 
@@ -178,59 +128,28 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-2021-8-13-FastInvSqrt" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/08/13/2021-8-13-FastInvSqrt/" class="article-date">
-  <time class="dt-published" datetime="2021-08-13T10:33:39.000Z" itemprop="datePublished">2021-08-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2021/08/19/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
         
+          Hello World
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/08/13/2021-8-13-FastInvSqrt/">2021-8-13-FastInvSqrt</a>
-    </h1>
   
+    <a href="/2021/08/13/2021-8-13-FastInvSqrt/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">2021-8-13-FastInvSqrt</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="快速平方根倒数算法"><a href="#快速平方根倒数算法" class="headerlink" title="快速平方根倒数算法"></a>快速平方根倒数算法</h1><p>快速平方根倒数算法也称为平方根倒数速算法(Fast Inverse Square Root)是用于快速计算 的一种算法。此算法由于出现在《雷神之锤III竞技场》源代码中而被人们所熟知。此算法最早被认为是由约翰·卡马克所发明，但后来的调查显示，该算法在这之前就于计算机图形学的硬件与软件领域有所应用，此算法至今为止仍未能确切知晓算法中所使用的特殊常数的起源。<br>下列代码是《雷神之锤III竞技场》源代码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">Q_rsqrt</span><span class="params">( <span class="keyword">float</span> number )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">long</span> i;</span><br><span class="line">	<span class="keyword">float</span> x2, y;</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">float</span> threehalfs = <span class="number">1.5F</span>;</span><br><span class="line"> </span><br><span class="line">	x2 = number * <span class="number">0.5F</span>;</span><br><span class="line">	y  = number;</span><br><span class="line">	i  = * ( <span class="keyword">long</span> * ) &amp;y;                       <span class="comment">// evil floating point bit level hacking</span></span><br><span class="line">	i  = <span class="number">0x5f3759df</span> - ( i &gt;&gt; <span class="number">1</span> );               <span class="comment">// what the fuck?</span></span><br><span class="line">	y  = * ( <span class="keyword">float</span> * ) &amp;i;</span><br><span class="line">	y  = y * ( threehalfs - ( x2 * y * y ) );   <span class="comment">// 1st iteration </span></span><br><span class="line">    <span class="comment">// y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed</span></span><br><span class="line"> </span><br><span class="line">	<span class="keyword">return</span> y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="1-浮点数存储方式（IEEE754）"><a href="#1-浮点数存储方式（IEEE754）" class="headerlink" title="1. 浮点数存储方式（IEEE754）"></a>1. 浮点数存储方式（IEEE754）</h2><p>一个浮点数以32个二进制位表示一个有理数，而这32位由其意义分为三段：首先首位为符号位（si），如若是0则为正数，反之为负数；接下来的8位表示经过偏移处理（这是为了使之能表示-127－128, 偏移量B=127,E为指数值）后的指数；最后23位表示的则是有效数字中除最高位以外的其余数字(m)。公式表示：<br>$$<br>x=(-1)^{si}*(1+m)<em>2^{(E-B)}\<br>$$<br>例如： 0-01111100-0100000000000000000000 $= (-1)^{0}</em>(1+0.250)*2^{(124-127)} = 0.15625$  </p>
-<p>如果用浮点数序列表示整数，符号位占1位，数值占31位，则正整数为：$I = E * 2^{23} + M$,即$I = 124 * 2^{23} + 2^{21}$对于同样的32位二进制数码，若为浮点数表示时实际数值为$x=(1+m_x)2^{e_x}$，而若为整数表示时实际数值则为 $I_x=E_xL+M_x$，其中 $L=2^{n-1-b}$，这里n=32，b=8。式子中引入的新变量为：</p>
-<p>等式1：<br>$$m_x=\frac{M_x}{L}\$$<br>等式2：<br>$$e_x = E_x - B,其中B = 2^{b-1} - 1$$</p>
-<h2 id="2-浮点数平方根倒数近似值"><a href="#2-浮点数平方根倒数近似值" class="headerlink" title="2. 浮点数平方根倒数近似值"></a>2. 浮点数平方根倒数近似值</h2><p>平方根倒数方程<br>$$y=\frac{1}{\sqrt{x}}\$$<br>取对数：<br>$$\log_2y = -\frac{1}{2}\log_2x\$$<br>因为浮点数可表示为：$x=(1+m_x)*2^{e_x}$ 所以有$y=(1+m_y)*2^{e_y}$, 代入上式有：<br>$$<br>\log_2(1+m_y) + e_y = -\frac{1}{2}\log_2(1+m_x) - \frac{1}{2}e_x<br>$$<br>再度引入新数$\sigma$描述$\log_2{(1+x)}$与近似值R间的误差：由于$0 \le x &lt; 1$ ，有$\log_2{(1+x)}\approx {x}$，则在此可定义$\sigma$与$x$的关系为$\log_2{(1+x)}\cong x+\sigma$，其中$\sigma$介于0到$\frac{1}{3}$，所以将$\log_2{(1+x)}= x+\sigma$代入上式得：<br>$$m_y+\sigma+e_y=-\frac{1}{2}m_x-\frac{1}{2}\sigma-\frac{1}{2}e_x$$<br>将之前等式1，等式2代入到上述方程中，有：<br>$$M_y+(E_y-B)L=-\frac{3}{2}\sigma{L}-\frac{1}{2}M_x-\frac{1}{2}(E_x-B)L$$<br>移项整理得：<br>$$E_yL+M_y=\frac{3}{2}(B-\sigma)L-\frac{1}{2}(E_xL+M_x)$$<br>又因为浮点规格存储的正浮点数x，若将其作为长整型表示，则示值为：$I_x=E_xL+M_x$，所以x的平方根倒数的首次近似值的整数表示值为：<br>$$I_y=E_yL+M_y=R-\frac{1}{2}(E_xL+M_x)=R-\frac{1}{2}I_x，\其中R=\frac{3}{2}(B-\sigma)L，B=2^{b-1}-1 L=2^{n-1-b}，n=32，b=8。$$<br>这个式子对应着源代码中的这一行：<code>i  = 0x5f3759df - ( i &gt;&gt; 1 );</code>，然后将整数表示值换回表示浮点数：<code>y  = * ( float * ) &amp;i;</code>。这样就得到了浮点数的平方根倒数的近似值。<br>由第三部分可知：0x5f3759df 对应着R，即3/2(B-$\sigma$)L.当R为0x5f3759df时值最精准。</p>
-<p>“现在不仅该算法的原作者不明，人们也仍无法明确当初选择这个“魔术数字”的方法。Chris Lomont在研究中曾做了个试验：他编写了一个函数，以在一个范围内遍历选取R值的方式将逼近误差降到最小，以此方法他计算出了线性近似的最优R值0x5f37642f（与代码中使用的0x5f3759df相当接近），但以之代入算法计算并进行一次牛顿迭代后，所得近似值与代入0x5f3759df的结果相比精度却仍略微更低。……在Charles McEniry的论文中，他使用了一种类似Lomont但更复杂的方法来优化R值：他最开始使用穷举搜索，所得结果与Lomont相同；而后他尝试用带权二分法寻找最优值，所得结果恰是代码中所使用的魔术数字0x5f3759df”——维基百科</p>
-<p>最后使用牛顿迭代法使答案逼近<br>牛顿迭代法：设方程 y = f(x) - 0;已知y求x,先取得x的一个近似值$x_0$,设k为$x_0$处切线斜率：<br>$$<br>y_1 - y_0 = k(x_1-x_0)\<br>0-y_0 = k(x_1-x_0)\<br>x_1 = x_0-\frac{y_0}{k}\<br>x_1= x_0 \frac{f(x_0)}{f^{‘}{x_0}}<br>$$<br>反复重复以上步骤获得更精确的值：<br>$$x_{n+1} = x_n-\frac{f(x_n)}{f^{‘}{x_n}}$$</p>
-<h1 id="tmd我怎么就写不出来！"><a href="#tmd我怎么就写不出来！" class="headerlink" title="tmd我怎么就写不出来！"></a>tmd我怎么就写不出来！</h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/13/2021-8-13-FastInvSqrt/" data-id="cksikr5o500001aok8psq65nf" data-title="2021-8-13-FastInvSqrt" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
 
 
 </section>
